@@ -1,0 +1,149 @@
+Integrasi Modul Produk Page:
+    DetailCOntroller:
+        ✔ Work With File : DetailCOntroller.php ,  Detail.blade.php @done (17/12/2020 11.33.33)
+        ✔ use model product di detailcontroller@index @done (17/12/2020 10.49.41)
+        ✔ panggil relasi galleries dan user, select slug-nya berdasarkan parameter id dari function index, firstOrFail @done (17/12/2020 11.16.25)
+    Detail.blade.php:
+        ✔ product->name @done (17/12/2020 11.16.32)
+        ✔ product->user->store_name @done (17/12/2020 11.31.00)
+        ✔ number format @done (17/12/2020 11.31.01)
+        ✔ Authentdication @done (17/12/2020 12.45.56)
+            ✔ button add to cart for Authenticated Users -- Else Or Button 'Sign In to Add' @done (17/12/2020 12.45.47)
+            ✔ Product Description @done (17/12/2020 12.45.50)
+        ✔ Product galleries @done (17/12/2020 16.28.53)
+            ✔ Looping Photo galleries with foreach @done (17/12/2020 16.28.50)
+            ✔ $gallery->id -- Storage::url($gallery->photos) @done (17/12/2020 16.28.52)
+
+Membuat Model Cart:
+    ✔ Make CART Model @done (18/12/2020 17.53.35)
+    ✔ fillable for users id and product_id @done (18/12/2020 17.53.36)
+    ✔ Relasi ke Product Table dan User Table @done (18/12/2020 17.53.37)
+Fungsi Add To Cart:
+    ✔ Crate carts table @done (18/12/2020 19.28.16)
+    ✔ Add new post route--DetailController@add name->detail-add @done (20/12/2020 11.55.27)
+    ✔ method Detailcontroller@add @done (20/12/2020 11.55.33)
+        ✔ buat data placeholder untuk create data ke table cart @done (20/12/2020 11.55.37)
+        ✔ redirect to cart page @done (20/12/2020 11.57.06)
+    ✔ Form Action: route detail-add with product_id @done (20/12/2020 11.57.13)
+Integrasi Modul Cart:
+    Controller Modul Cart:
+        ✔ method index @done (20/12/2020 16.20.15)
+            ✔ ambil data relasi galleri product dan user @done (20/12/2020 16.20.15)
+            ✔ return to View Carts with selected data @done (20/12/2020 16.20.15)
+        ✔ method delete @done (20/12/2020 16.20.16)
+    View modul Cart:
+        ✔ Looping Produk @done (22/12/2020 16.58.21)
+             ✔ looping product @done (22/12/2020 16.58.19)
+                ✔ foreach @done (22/12/2020 16.58.20)
+             ✔ remove button @done (22/12/2020 16.58.43)
+                ✔ delete method form @done (22/12/2020 16.58.43)
+                ✔ make delete route @done (22/12/2020 16.59.37)
+                ✔ passing cart id for delete @done (22/12/2020 16.59.37)
+    Pasang Library Indoregion:
+        ✔ cek dokumentasi dan install @done (22/12/2020 18.08.59)
+    Membuat API Location dai Indoregion:
+        ✔ make controller LocationController to API folder @done (23/12/2020 11.26.14)
+        ✔ create  2 functions for taking all provinces data and regions data @done (23/12/2020 11.48.27)
+            ✔ function provinces (Request $request) @done (23/12/2020 11.48.28)
+            ✔ function regencies (Request $request, provinces_id) @done (23/12/2020 11.48.30)
+        ✔ add route province to API route @done (23/12/2020 11.53.43)
+    Form Profile User:
+        ✔ integrasi total price, kosongkan additional tax -- 03.00 @done (25/12/2020 10.24.17)
+        ✔ wrap input address to form tag--4.15 @done (25/12/2020 10.36.20)
+        ✔ revisi atribut field form. Sesuaikan dengan tabel users--04.44 @done (25/12/2020 10.53.42)
+        ✔ VUE JS -- 06.18 @done (25/12/2020 11.34.09)
+            ✔ copy from latest vue script @done (25/12/2020 10.57.50)
+            ✔ make id location to form @done (25/12/2020 10.57.51)
+            ✔ set empty variabel to data --08.01 @done (25/12/2020 11.34.00)
+        ✔ get AXIOS -- 08.47 @done (25/12/2020 11.34.12)
+        ✔ make method getProvincesData and getRegenciesData--09.32 @done (25/12/2020 11.34.13)
+        ✔ get regencies data method -- 12.20 @done (25/12/2020 11.51.29)
+        ✔ form modification -- 15.27 @done (25/12/2020 20.04.21)
+        ✔ input data regencies ke select via vue--18.39 @done (25/12/2020 20.04.27)
+    Update Cart Pada Navigasi:
+        ✔ (Flash Task) @done (26/12/2020 16.54.50)
+    Integration With MIDTRANS:
+        ☐ data tidak masuk ke TransactinDetail @critical
+        ✘ upload site to netlify @cancelled (28/12/2020 09.23.06)
+        ✔ Daftar Ke MIDTRANS @done (28/12/2020 09.23.02)
+        ✔ use libarry midtrans-php @done (28/12/2020 10.30.15)
+            ✔ install with composer @done (28/12/2020 10.30.14)
+            ✔ add general setting Midtrans configuration to services for env. @done (28/12/2020 10.30.14)
+    Integrasi Checkout Dengan MIDTRANS:
+        ✔ read documentation. @done (28/12/2020 17.11.34)
+        ✔ Buat Checkout Controller -- 04.06 @done (28/12/2020 10.43.12)
+        ✔ make function @done (28/12/2020 10.43.28)
+            ✔ process @done (28/12/2020 10.43.29)
+            ✔ callbak @done (28/12/2020 10.43.29)
+        ✔ route @done (28/12/2020 17.11.15)
+            ✔ post:checkout@process @done (28/12/2020 17.11.15)
+            ✔ post:checkout@callback @done (28/12/2020 17.11.16)
+        ✔ process method -- 06.04 @done (29/12/2020 13.17.54)
+            ✔ take authenticated user id @done (29/12/2020 09.08.31)
+            ✔ update it's data, except total price @done (29/12/2020 09.08.32)
+            ✔ take cart data of authenticated user @done (29/12/2020 09.08.32)
+            ✔ create data to Transactin table @done (29/12/2020 09.10.29)
+            ✔ create data transaction detial @done (29/12/2020 09.17.55)
+                ✔ foreach data carts @done (29/12/2020 09.17.56)
+            ✔ modif cart form, clue: hidden input @done (29/12/2020 13.15.39)
+        ✔ Integrasi midtrans: @high @done (31/12/2020 15.07.26)
+            ✔ konfigurasi SNAP @done (31/12/2020 15.07.26)
+            ✔ array data to send to Midtrans. (check documentasi midtrans) @done (31/12/2020 15.07.27)
+            ✔ snap redirect @done (31/12/2020 15.07.28)
+            ✔ vt web @done (31/12/2020 15.07.30)
+            ✔ redirect @done (31/12/2020 15.07.29)
+    FInalisasi integrasi (menambahkan middleware di web route):
+        ✔ route group for middleware user @done (1/1/2021 10.34.19)
+        ✔ middleware for admin @done (1/1/2021 10.34.19)
+    Integrasi Dashboard Page:
+        ✔ Mengubah Model Transaction: @done (2/1/2021 10.05.48)
+            ✔ buat relasi ke tabel user (belongsTo) @done (2/1/2021 10.05.45)
+        ✔ Mengubah Model Transaction Detail @done (2/1/2021 10.18.00)
+            ✔ relasi dengan product @done (2/1/2021 10.18.01)
+            ✔ relasi dengan transaction @done (2/1/2021 10.18.02)
+    Integrasi Dashboard :
+        ✔ use product, transaction and auth facade @done (2/1/2021 11.18.43)
+        ✔ Count data of Transactions, Revenue, Customer @done (2/1/2021 16.36.24)
+            ✔ Transactoin @done (2/1/2021 16.36.24)
+                ✔ get authenticated data from user: @done (2/1/2021 13.48.02)
+                    ✔ transaction.user @done (2/1/2021 13.48.03)
+                    ✔ product.galleries @done (2/1/2021 13.48.03)
+            ✔ Revenue @done (2/1/2021 16.36.20)
+                ✔ total harga produk dari transaction @done (2/1/2021 16.36.21)
+            ✔ Customer @done (2/1/2021 16.36.21)
+                ✔ Count aja @done (2/1/2021 16.36.22)
+    Integrasi View Dashboard Page:
+        ✔ Mengatur Sidebar dan Navbar @done (8/1/2021 13.49.03)
+            ✔ Cek link setiap menu di Sidebar @done (8/1/2021 13.49.04)
+            ✔ Penyesuaian Navbar @done (8/1/2021 13.49.04)
+    Integrasi Dashboard My Product:
+        Detail dan Edit:
+            ☐ Add route for edit product & gallery
+            ☐ ambil data product, categori, dan gallery untuk view edit
+            ☐ add method uploadGallery untuk foto product baru
+            ☐ add method delete for product gallery
+            ☐ add method update product
+            ☐ integrasikan ke view
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
