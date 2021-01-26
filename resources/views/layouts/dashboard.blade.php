@@ -48,7 +48,7 @@
               href=" {{route('dashboard-transaction')}} "
               class="list-group-item list-group-item-action
 
-              @if(Request::is('dashboard/transactions'))
+              @if(Request::is('dashboard/transaction*'))
               {{'active'}}
               @endif
 
@@ -78,10 +78,10 @@
               >My Account</a
             >
 
-            <a class="list-group-item list-group-item-action" href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <a class="list-group-item list-group-item-action" href="" onclick="event.preventDefault(); document.getElementById('sign-out').submit();">
                 Sign Out
             </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            <form id="sign-out" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
             </form>
 

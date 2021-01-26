@@ -36,10 +36,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/dashboard/transactions', 'TransactionController@index')->name('dashboard-transaction');
     Route::get('/dashboard/transaction-details/{id}', 'TransactionController@details')->name('dashboard-transaction-details');
+    Route::post('/dashboard/transaction-details/{id}', 'TransactionController@update')->name('dashboard-transaction-update');
 
     Route::get('/settings', 'SettingsController@index')->name('settings');
     Route::get('/account', 'SettingsController@account')->name('account');
-    Route::post('/account/{redirect}', 'SettingsController@update')->name('redirect');
+    Route::post('/account/{redirect}', 'SettingsController@update')->name('dashboard-setting-redirect');
 });
 
 Route::get('/', 'HomeController@index')->name('home');

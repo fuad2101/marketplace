@@ -18,25 +18,26 @@
               <div class="dashboard-content">
                 <div class="card">
                   <div class="card-body">
-                    <form action="" class="mt-3">
+                    <form action=" {{ route('dashboard-setting-redirect','settings') }} " method="POST" class="mt-3">
+                        @csrf
                       <div class="form-group">
                         <label for="store-name">Store Name</label>
                         <input
                           class="form-control"
                           type="store-name"
-                          name=""
+                          name="store_name"
                           id="store-name"
                           autofocus
-                          value="Papel La Casa"
+                          value=" {{ $users->store_name }} "
                         />
                       </div>
                       <div class="form-group">
                         <label for="">Category</label>
-                        <select class="form-control" name="category" id="">
-                          <option value="" disabled>Select Category</option>
-                          <option value="Makanan">Makanan</option>
-                          <option value="Pakaian">Pakaian</option>
-                          <option value="Lain-Lain">Lain-Lain</option>
+                        <select class="form-control" name="categories_id" id="categories_id">
+                            <option value="{{$users->categories_id }} ">(Tidak Diubah)</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }} ">{{ $category->name }}</option>
+                                @endforeach
                         </select>
                       </div>
                       <div class="form-group">
@@ -50,10 +51,11 @@
                           <input
                             type="radio"
                             class="custom-control-input"
-                            name="is_store_open"
+                            name="store_status"
                             id="openStoreTrue"
                             v-model="is_store_open"
-                            :value="true"
+                            value="1"
+                            {{ $users->store_status == 1 || $users->store_status == true ? 'checked' : '' }}
                           />
                           <label
                             class="custom-control-label"
@@ -67,10 +69,11 @@
                           <input
                             type="radio"
                             class="custom-control-input"
-                            name="is_store_open"
+                            name="store_status"
                             id="openStoreFalse"
                             v-model="is_store_open"
-                            :value="false"
+                            value="0"
+                            {{ $users->store_status == 0 || $users->store_status == NULL ? 'checked' : '' }}
                           />
                           <label
                             class="custom-control-label"

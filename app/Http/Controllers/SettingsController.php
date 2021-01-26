@@ -29,5 +29,7 @@ class SettingsController extends Controller
         $data = $request->all();
         $item = Auth::user();
         $item->update($data);
+
+        return redirect()->route($redirect);
     }
 }

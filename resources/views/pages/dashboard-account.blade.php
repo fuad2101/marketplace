@@ -18,7 +18,8 @@
               <div class="dashboard-content">
                 <div class="card">
                   <div class="card-body">
-                    <form action="">
+                    <form action=" {{route('dashboard-setting-redirect','account')}} " method="POST" id="location" >
+                        @csrf
                       <div
                         class="row mb-2"
                         data-aos="fade-up"
@@ -30,9 +31,9 @@
                             <input
                               class="form-control"
                               type="text"
-                              name="profile-name"
-                              id="profile-name"
-                              value="Papel La Casa"
+                              name="name"
+                              id="name"
+                              value=" {{ $users->name }} "
                             />
                           </div>
                         </div>
@@ -44,7 +45,7 @@
                               type="text"
                               name="email"
                               id="email"
-                              value="Papel La Casa"
+                              value=" {{ $users->email }} "
                             />
                           </div>
                         </div>
@@ -56,25 +57,25 @@
                       >
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label for="addressOne">Address 1</label>
+                            <label for="addressOne">Address One</label>
                             <input
                               class="form-control"
                               type="text"
-                              name="addressOne"
-                              id="addressOne"
-                              value="Setra Duta Cemara"
+                              name="address_one"
+                              id="address_one"
+                              value=" {{ $users->address_one }} "
                             />
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label for="addressTwo">Address 2</label>
+                            <label for="addressTwo">Address Two</label>
                             <input
                               class="form-control"
                               type="text"
-                              name="addressTwo"
-                              id="addressTwo"
-                              value="Blok B2 No. 34"
+                              name="address_two"
+                              id="address_two"
+                              value=" {{ $users->address_two }} "
                             />
                           </div>
                         </div>
@@ -86,37 +87,32 @@
                       >
                         <div class="col-md-4">
                           <div class="form-group">
-                            <label for="province">Province</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              name="province"
-                              id="province"
-                              value="West Java"
-                            />
+                            <label for="provinces_id">Province</label>
+                                <select class="form-control" name="provinces_id" id="provinces_id" v-if="provinces" v-model="provinces_id">
+                                    <option value="{{$users->provinces_id }}" selected>(Tidak DiUbah)</option>
+                                    <option v-for="province in provinces" :value="province.id" >@{{province.name}} </option>
+                                </select>
+                                <select v-else class="form-control"></select>
                           </div>
                         </div>
                         <div class="col-md-4">
                           <div class="form-group">
-                            <label for="city">City</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              name="city"
-                              id="city"
-                              value="Bandung"
-                            />
+                            <label for="regencies_id">City</label>
+                                <select class="form-control" name="regencies_id" id="regencies_id" v-if="regencies" v-model="regencies_id">
+                                    <option v-for="regency in regencies" :value="regency.id">@{{regency.name}} </option>
+                                </select>
+                                <select v-else class="form-control"></select>
                           </div>
                         </div>
                         <div class="col-md-4">
                           <div class="form-group">
-                            <label for="postalCode">Postal Code</label>
+                            <label for="postalCode">ZIP Code</label>
                             <input
                               class="form-control"
                               type="text"
-                              name="postalCode"
-                              id="postalCode"
-                              value="123999"
+                              name="zip_code"
+                              id="zip_code"
+                              value="{{$users->zip_code}}"
                             />
                           </div>
                         </div>
@@ -142,13 +138,13 @@
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label for="mobile">Mobile</label>
+                            <label for="phone_number">Mobile</label>
                             <input
                               class="form-control"
                               type="text"
-                              name="mobile"
-                              id="mobile"
-                              value="+628 2020 11111"
+                              name="phone_number"
+                              id="phone_number"
+                              value="{{$users->phone_number}}"
                             />
                           </div>
                         </div>
@@ -165,4 +161,47 @@
             </div>
           </div>
 @endsection
+
+
+@push('addon-script')
+<script src="/vendor/vue/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var register = new Vue({
+            el: '#location',
+            mounted(){
+                AOS.init();
+                this.getProvincesData();
+            },
+            data:{
+                provinces_id:null,
+                regencies_id:null,
+                provinces:null,
+                regencies:null,
+            },
+            methods:{
+                getProvincesData(){
+                    var self = this;
+                    axios.get('{{route('api-provinces')}}')
+                    .then(function(response){
+                        self.provinces = response.data;
+                    })
+                },
+                getRegenciesData(){
+                    var self = this;
+                    axios.get('{{url('api/regencies')}}/'+self.provinces_id)
+                    .then(function(response) {
+                        self.regencies = response.data;
+                    })
+                },
+            },
+            watch:{
+                provinces_id:function(val,oldVal){
+                    this.regencies_id = null;
+                    this.getRegenciesData();
+                }
+            }
+        })
+</script>
+@endpush
 

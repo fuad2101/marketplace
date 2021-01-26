@@ -118,32 +118,38 @@ Integrasi Modul Cart:
             ✔ Penyesuaian Navbar @done (8/1/2021 13.49.04)
     Integrasi Dashboard My Product:
         Detail dan Edit:
-            ☐ Add route for edit product & gallery
-            ☐ ambil data product, categori, dan gallery untuk view edit
-            ☐ add method uploadGallery untuk foto product baru
-            ☐ add method delete for product gallery
-            ☐ add method update product
-            ☐ integrasikan ke view
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            ✔ Add route for edit product & gallery @done (20/1/2021 11.46.48)
+            ✔ ambil data product, categori, dan gallery untuk view edit @done (20/1/2021 11.46.49)
+            ✔ add method uploadGallery untuk foto product baru @done (20/1/2021 11.46.50)
+            ✔ add method delete for product gallery @done (20/1/2021 11.46.50)
+            ✔ add method update product @done (20/1/2021 11.46.51)
+            ✔ integrasikan ke view @done (20/1/2021 11.46.51)
+    Integrasi Dashbaord Transaction:
+        ✔ Kirim data yang dibutuhkan view @done (21/1/2021 10.15.03)
+        ✔ Inject data ke view transaction @done (21/1/2021 10.15.04)
+        Transaction Details :
+            ✔ Get Data from Transaction Detail @done (21/1/2021 11.52.36)
+            ✔ Inject to view Transaction Details @done (21/1/2021 11.52.39)
+            ✔ Make form for shipment details @done (21/1/2021 11.52.40)
+            ✔ Use Direct Model to Province and Regencies for shipment details form @done (21/1/2021 11.52.41)
+    Deployment:
+        ✔ Mengamankan aplikasi dengan set APP_DEBUG ke false @done (26/1/2021 12.29.09)
+        ☐ Upload Project ke Github
+        ☐ Membeli Domain
+            ☐ Memilih Server VPS untuk Laravel
+        ☐ Membuat Server
+            ☐  Membuat Server VPS
+        ☐ Download PuTTY (untuk Windows)
+        ☐ Masuk ke Server
+            ☐ Set APP_ENV ke production
+        ☐ Konfigurasi Firewall
+        ☐ Memasang NginX
+        ☐ Memasang MySQL
+        ☐ Memasang dan Test php
+        ☐ Memasang composer
+        ☐ Memasang Modul PHP
+        ☐ Membuat Database
+        ☐ Mengatur Aplikasi
+        ☐ Mengatur Nginx, Database dan Migration
+        ☐ Mengatur Domain
+        ☐ Install PhpMyAdmin

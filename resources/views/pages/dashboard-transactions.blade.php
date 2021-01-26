@@ -29,9 +29,9 @@
                                 class="nav-link active"
                                 id="pills-home-tab"
                                 data-toggle="pill"
-                                href="#pills-home"
+                                href="#sell"
                                 role="tab"
-                                aria-controls="pills-home"
+                                aria-controls="sell"
                                 aria-selected="true"
                                 >Sell Products</a
                             >
@@ -41,9 +41,9 @@
                                 class="nav-link"
                                 id="pills-profile-tab"
                                 data-toggle="pill"
-                                href="#pills-profile"
+                                href="#buy"
                                 role="tab"
-                                aria-controls="pills-profile"
+                                aria-controls="buy"
                                 aria-selected="false"
                                 >Buy Products</a
                             >
@@ -55,14 +55,15 @@
                     >
                         <div
                             class="tab-pane fade show active"
-                            id="pills-home"
+                            id="sell"
                             role="tabpanel"
-                            aria-labelledby="pills-home-tab"
+                            aria-labelledby="sell-tab"
                         >
+                        @foreach ($sellTransaction as $item)
                             <div class="row mt-3">
                                 <div class="col-12 mt-2">
                                     <a
-                                        href="/dashboard-transaction-details.html"
+                                        href=" {{ route('dashboard-transaction-details',$item->id) }} "
                                         class="card card-list d-block"
                                     >
                                         <div
@@ -75,28 +76,24 @@
                                                     class="col-md-1"
                                                 >
                                                     <img
-                                                        src="/images/dashboard/image-icon-product1.jpg"
+                                                        src=" {{Storage::url($item->product->galleries->first()->photos)}} " class="w-75"
                                                         alt=""
                                                     />
                                                 </div>
                                                 <div
                                                     class="col-md-4"
                                                 >
-                                                    Shirup
-                                                    Marzzan
+                                                    {{$item->product->name}}
                                                 </div>
                                                 <div
                                                     class="col-md-3"
                                                 >
-                                                    Angga
-                                                    Risky
+                                                   {{$item->transaction->user->store_name}}
                                                 </div>
                                                 <div
                                                     class="col-md-3"
                                                 >
-                                                    12
-                                                    Januari,
-                                                    2020
+                                                    {{$item->created_at}}
                                                 </div>
                                                 <div
                                                     class="col-md-1 d-none d-md-block"
@@ -108,152 +105,46 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div
-                                            class="card-body"
-                                        >
-                                            <div
-                                                class="row"
-                                            >
-                                                <div
-                                                    class="col-md-1"
-                                                >
-                                                    <img
-                                                        src="/images/dashboard/image-icon-product2.jpg"
-                                                        alt=""
-                                                    />
-                                                </div>
-                                                <div
-                                                    class="col-md-4"
-                                                >
-                                                    LeBrone
-                                                    X
-                                                </div>
-                                                <div
-                                                    class="col-md-3"
-                                                >
-                                                    Masayoshi
-                                                </div>
-                                                <div
-                                                    class="col-md-3"
-                                                >
-                                                    11
-                                                    January,
-                                                    2020
-                                                </div>
-                                                <div
-                                                    class="col-md-1 d-none d-md-block"
-                                                >
-                                                    <img
-                                                        src="/images/dashboard/expand-icon.svg"
-                                                        alt=""
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="card-body"
-                                        >
-                                            <div
-                                                class="row"
-                                            >
-                                                <div
-                                                    class="col-md-1"
-                                                >
-                                                    <img
-                                                        src="/images/dashboard/image-icon-product3.jpg"
-                                                        alt=""
-                                                    />
-                                                </div>
-                                                <div
-                                                    class="col-md-4"
-                                                >
-                                                    Soffa
-                                                    Lembutte
-                                                </div>
-                                                <div
-                                                    class="col-md-3"
-                                                >
-                                                    Shayna
-                                                </div>
-                                                <div
-                                                    class="col-md-3"
-                                                >
-                                                    11
-                                                    January,
-                                                    2020
-                                                </div>
-                                                <div
-                                                    class="col-md-1 d-none d-md-block"
-                                                >
-                                                    <img
-                                                        src="/images/dashboard/expand-icon.svg"
-                                                        alt=""
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
+
                                     </a>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
                         <div
                             class="tab-pane fade"
-                            id="pills-profile"
+                            id="buy"
                             role="tabpanel"
-                            aria-labelledby="pills-profile-tab"
+                            aria-labelledby="buy-tab"
                         >
+                            @foreach ($buyTransaction as $item)
                             <div class="row mt-3">
                                 <div class="col-12 mt-2">
-                                    <a
-                                        href=""
-                                        class="card card-list d-block"
-                                    >
-                                        <div
-                                            class="card-body"
-                                        >
-                                            <div
-                                                class="row"
-                                            >
-                                                <div
-                                                    class="col-md-1"
-                                                >
-                                                    <img
-                                                        src="/images/dashboard/image-icon-product1.jpg"
-                                                        alt=""
-                                                    />
+                                    <a href=" {{ route('dashboard-transaction-details',$item->id) }} " class="card card-list d-block">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <img src=" {{Storage::url($item->product->galleries->first()->photos)}} " class="w-75" alt="" />
                                                 </div>
-                                                <div
-                                                    class="col-md-4"
-                                                >
-                                                    Shirup
-                                                    Marzzan
+                                                <div class="col-md-4">
+                                                    {{$item->product->name}}
                                                 </div>
-                                                <div
-                                                    class="col-md-3"
-                                                >
-                                                    Angga
-                                                    Risky
+                                                <div class="col-md-3">
+                                                    {{$item->transaction->user->store_name}}
                                                 </div>
-                                                <div
-                                                    class="col-md-3"
-                                                >
-                                                    12
-                                                    Januari,
-                                                    2020
+                                                <div class="col-md-3">
+                                                    {{$item->created_at}}
                                                 </div>
-                                                <div
-                                                    class="col-md-1 d-none d-md-block"
-                                                >
-                                                    <img
-                                                        src="/images/dashboard/expand-icon.svg"
-                                                        alt=""
-                                                    />
+                                                <div class="col-md-1 d-none d-md-block">
+                                                    <img src="/images/dashboard/expand-icon.svg" alt="" />
                                                 </div>
                                             </div>
                                         </div>
+
                                     </a>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
