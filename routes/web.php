@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/account/{redirect}', 'SettingsController@update')->name('dashboard-setting-redirect');
 });
 
-Route::get('/', 'HomeController@index')->name('home');
+// Route::get('/', 'HomeController@index')->name('home');
 Route::get('/register-success', 'RegisterController@success')->name('register-success');
 Route::get('/login', 'Auth\LoginController@index')->name('login');
 Route::get('/categories', 'CategoryController@index')->name('category');
@@ -58,4 +58,8 @@ Route::prefix('admin')->namespace('admin')->middleware('auth', 'admin')->group(f
     Route::resource('user', 'UserController');
     Route::resource('product', 'ProductController');
     Route::resource('product-gallery', 'ProductGalleryController');
+});
+
+Route::get('/',function(){
+    return view('welcome');
 });
